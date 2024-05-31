@@ -9,16 +9,16 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.DriveTrain;
 
-public class ArcadeDrive extends Command {
-  /** Creates a new ArcadeDrive. */
+public class TankDrive extends Command {
+  /** Creates a new TankDrive. */
   DriveTrain driveTrain;
   CommandXboxController controller;
 
-  public ArcadeDrive(DriveTrain driveTrain, CommandXboxController controller) {
+  public TankDrive(DriveTrain driveTrain, CommandXboxController controller) {
+    // Use addRequirements() here to declare subsystem dependencies.
     this.driveTrain = driveTrain;
     this.controller = controller;
 
-    // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(driveTrain);
   }
 
@@ -30,15 +30,15 @@ public class ArcadeDrive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveTrain.arcadeDrive(
+    driveTrain.tankDrive(
         0.7 * MathUtil.applyDeadband(controller.getLeftY(), 0.05),
-        0.7 * MathUtil.applyDeadband(-1 * controller.getRightX(), 0.05));
+        0.7 * MathUtil.applyDeadband(controller.getRightY(), 0.05));
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    driveTrain.arcadeDrive(0, 0);
+    driveTrain.tankDrive(0, 0);
   }
 
   // Returns true when the command should end.

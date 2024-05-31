@@ -7,6 +7,7 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.Autos;
+import frc.robot.commands.TankDrive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -29,7 +30,7 @@ public class RobotContainer {
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
   private final ArcadeDrive arcadeDrive = new ArcadeDrive(driveTrain, driverController);
-
+  private final TankDrive tankDrive = new TankDrive(driveTrain, driverController);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
@@ -52,7 +53,7 @@ public class RobotContainer {
     // cancelling on release.
     // driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
 
-    driveTrain.setDefaultCommand(arcadeDrive);
+    driveTrain.setDefaultCommand(tankDrive);
   }
 
   /**

@@ -24,10 +24,10 @@ public class DriveTrain extends SubsystemBase {
 
   /** Creates a new DriveTrain. */
   public DriveTrain() {
-    this.leftLeader = new WPI_TalonSRX(1);
-    this.leftFollower = new WPI_TalonSRX(2);
-    this.rightLeader = new WPI_TalonSRX(3);
-    this.rightFollower = new WPI_TalonSRX(4);
+    this.leftLeader = new WPI_TalonSRX(4);
+    this.leftFollower = new WPI_TalonSRX(3);
+    this.rightLeader = new WPI_TalonSRX(1);
+    this.rightFollower = new WPI_TalonSRX(2);
 
     leftFollower.follow(leftLeader);
     rightFollower.follow(rightLeader);
